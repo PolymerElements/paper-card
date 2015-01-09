@@ -1,2 +1,4 @@
-# paper-card
-A paper card control à la Material Design
+paper-card
+==============
+
+See the [component page](http://polymerlabs.github.io/paper-card) for more information.
