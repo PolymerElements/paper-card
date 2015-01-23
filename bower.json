@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "swipeable-card": "PolymerLabs/swipeable-card#master"
+    "swipeable-card": "PolymerLabs/swipeable-card#master",
+    "core-icon-button": "Polymer/core-icon-button#master",
+    "paper-button": "Polymer/paper-button#master"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^1.0.0"
