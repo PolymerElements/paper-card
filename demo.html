@@ -91,7 +91,17 @@
 
     <paper-card heading="Not all cards need to be swipeable" disableSwipe></paper-card>
 
-    <paper-card>
+    <paper-card id="shadow_demo" heading="Paper Shadows" headingColor="#e9005f" z="1" animatedShadow>
+      <div content>
+        Cards can have different shadows.
+      </div>
+      <div actions>
+        <paper-button onclick="decreaseShadow()">Decrease</paper-button>
+        <paper-button onclick="increaseShadow()">Increase</paper-button>
+      </div>
+    </paper-card>
+
+    <paper-card >
       <div content>
         <div>Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
         </div>
@@ -164,6 +174,20 @@
     document.querySelector('#cards').addEventListener('swipeable-card-swipe-away', function(e) {
       e.target.parentNode.removeChild(e.target);
     });
+
+    function decreaseShadow() {
+      var card = document.querySelector('#shadow_demo');
+      var z = parseInt(card.getAttribute('z'));
+      z = z > 0 ? z - 1 : 0;
+      card.setAttribute('z', z);
+    }
+
+    function increaseShadow() {
+      var card = document.querySelector('#shadow_demo');
+      var z = parseInt(card.getAttribute('z'));
+      z = z < 5 ? z + 1 : 5;
+      card.setAttribute('z', z);
+    }
   </script>
 
 </body>
