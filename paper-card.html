@@ -34,6 +34,7 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
 <link rel="import" href="../polymer/polymer.html">
 
 <link href="../swipeable-card/swipeable-card.html" rel="import">
+<link href="../paper-shadow/paper-shadow.html" rel="import">
 
 <polymer-element name="paper-card" extends="swipeable-card">
 
@@ -46,8 +47,6 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
       position: relative;
       background: #fff;
       border-radius: 2px;
-      box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px,
-                  rgba(0, 0, 0, 0.098) 0px 0px 3px;
       transition: 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
       transition-property: opacity, -webkit-transform;
       transition-property: opacity, transform;
@@ -80,15 +79,19 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
     polyfill-next-selector { content: '> [content]' }
     ::content > [content] {
       padding: 16px;
+      position:relative;
     }
 
     polyfill-next-selector { content: '> [actions]' }
     ::content > [actions] {
       border-top: 1px solid #e8e8e8;
       padding: 5px 16px;
+      position:relative;
     }
 
   </style>
+  
+  <paper-shadow id="shadow" animated?="{{animatedShadow}}" fit></paper-shadow>
 
   <div class="header">
     <template if="{{image}}">
@@ -133,7 +136,27 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
        * @type string
        * @default ''
        */
-      image:''
+      image:'',
+
+      /**
+       * The z-depth of this shadow, from 0-5.
+       *
+       * @attribute z
+       * @type number
+       * @default 1
+       */
+      z: 1,
+
+      /**
+       * Set this to true to animate the shadow when setting a new
+       * `z` value.
+       *
+       * @attribute animated
+       * @type boolean
+       * @default false
+       */
+      animatedShadow: false
+
     },
 
     headingChanged: function(old) {
@@ -141,6 +164,10 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
       if (!label || label === old) {
         this.setAttribute('aria-label', this.heading);
       }
+    },
+
+    zChanged: function(old, newValue){
+      this.$.shadow.setZ(newValue);
     }
 
   });
