@@ -1,4 +1,5 @@
 <!--
+@license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
@@ -7,170 +8,167 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-material/paper-material.html">
+
 <!--
 Material Design: <a href="http://www.google.com/design/spec/components/card.html">Cards</a>
 
-`paper-card` is a swipeable container with a drop shadow.
+`paper-card` is a container with a drop shadow.
 
 Example:
 
     <paper-card heading="Card Title">
-      <div content>Some content</div>
-      <div actions>
-        <paper-button dismissive>Some action</paper-button>
-      </div actions>
+      <div class="card-content">Some content</div>
+      <div class="card-actions">
+        <paper-button>Some action</paper-button>
+      </div>
     </paper-card>
 
-Accessibility
--------------
+### Accessibility
 
 By default, the `aria-label` will be set to the value of the `heading` attribute.
 
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-card-header-color` | The color of the header text | `#000`
+`--paper-card-header` | Mixin applied to the card header section | `{}`
+`--paper-card-content` | Mixin applied to the card content section| `{}`
+`--paper-card-actions` | Mixin applied to the card action section | `{}`
+`--paper-card` | Mixin applied to the card | `{}`
+
+@group Paper Elements
 @element paper-card
-@extends swipeable-card
-@homepage github.io
+@demo demo/index.html
 -->
 
-<link rel="import" href="../polymer/polymer.html">
-
-<link href="../swipeable-card/swipeable-card.html" rel="import">
-<link href="../paper-shadow/paper-shadow.html" rel="import">
-
-<polymer-element name="paper-card" extends="swipeable-card">
-
-<template>
-
+<dom-module id="paper-card">
   <style>
+  :host {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
 
-    :host {
-      display: inline-block;
-      position: relative;
-      background: #fff;
-      border-radius: 2px;
-      transition: 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-      transition-property: opacity, -webkit-transform;
-      transition-property: opacity, transform;
-    }
+    background: #fff;
+    border-radius: 2px;
+    @apply(--paper-card);
+  }
 
-    :host(.dragging) {
-      transition: none;
-    }
+  /* IE 10 support for HTML5 hidden attr */
+  [hidden] {
+    display: none !important;
+  }
 
-    .header {
-      position: relative;
-    }
+  .header {
+    position: relative;
+    @apply(--paper-card-header);
+  }
 
-    .header img {
-      width: 100%;
-      pointer-events: none;
-    }
+  .header img {
+    width: 100%;
+    pointer-events: none;
+  }
 
-    .header h1 {
-      font-size: 24px;
-      padding: 0 16px;
-    }
+  .header .title-text {
+    padding: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--paper-card-header-color, #000);
+  }
 
-    .header h1.over {
-      position: absolute;
-      bottom: 0px;
-      margin-bottom: 16px;
-    }
+  .header .title-text.over-image {
+    position: absolute;
+    bottom: 0px;
+  }
 
-    polyfill-next-selector { content: '> [content]' }
-    ::content > [content] {
-      padding: 16px;
-      position:relative;
-    }
+  :host ::content.card-content {
+    padding: 16px;
+    position:relative;
+    @apply(--paper-card-content);
+  }
 
-    polyfill-next-selector { content: '> [actions]' }
-    ::content > [actions] {
-      border-top: 1px solid #e8e8e8;
-      padding: 5px 16px;
-      position:relative;
-    }
+  :host ::content.card-actions {
+    border-top: 1px solid #e8e8e8;
+    padding: 5px 16px;
+    position:relative;
+    @apply(--paper-card-actions);
+  }
 
   </style>
-  
-  <paper-shadow id="shadow" animated?="{{animatedShadow}}" fit></paper-shadow>
 
-  <div class="header">
-    <template if="{{image}}">
-      <img src="{{image}}">
-    </template>
-    <template if="{{heading}}">
-      <h1 class="{{ {over: image} | tokenList }}" style="color:{{headingColor}}">{{heading}}</h1>
-    </template>
-  </div>
+  <template>
 
-  <content></content>
+    <paper-material id="shadow" animated$="[[animatedShadow]]" elevation=[[elevation]]>
+      <div class="header">
+        <img hidden$="[[!image]]" src="[[image]]">
+        <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
+      </div>
 
-</template>
+      <content></content>
+
+    </paper-material>
+
+  </template>
+
+</dom-module>
 
 <script>
 
   Polymer({
-    publish: {
+
+    is: 'paper-card',
+
+    properties: {
 
       /**
        * The title of the card.
-       *
-       * @attribute heading
-       * @type string
-       * @default ''
        */
-      heading: '',
-
-      /**
-       * The hex color of the heading.
-       *
-       * @attribute headingColor
-       * @type string
-       * @default '#000'
-       */
-      headingColor: '#000',
+      heading: {
+        type: String,
+        value: '',
+        observer: '_headingChanged'
+      },
 
       /**
        * The url of the title image of the card.
-       *
-       * @attribute image
-       * @type string
-       * @default ''
        */
-      image:'',
+      image: {
+        type: String,
+        value: ''
+      },
 
       /**
-       * The z-depth of this shadow, from 0-5.
-       *
-       * @attribute z
-       * @type number
-       * @default 1
+       * The z-depth of the card, from 0-5.
        */
-      z: 1,
+      elevation: {
+        type: Number,
+        value: 1
+      },
 
       /**
-       * Set this to true to animate the shadow when setting a new
+       * Set this to true to animate the card shadow when setting a new
        * `z` value.
-       *
-       * @attribute animated
-       * @type boolean
-       * @default false
        */
-      animatedShadow: false
-
-    },
-
-    headingChanged: function(old) {
-      var label = this.getAttribute('aria-label');
-      if (!label || label === old) {
-        this.setAttribute('aria-label', this.heading);
+      animatedShadow: {
+        type: Boolean,
+        value: false
       }
     },
 
-    zChanged: function(old, newValue){
-      this.$.shadow.setZ(newValue);
-    }
+    _headingChanged: function(heading) {
+      var label = this.getAttribute('aria-label');
+      this.setAttribute('aria-label', heading);
+    },
 
+    _computeHeadingClass: function(image) {
+      var cls = 'title-text';
+      if (image)
+        cls += ' over-image';
+      return cls;
+    }
   });
 </script>
-
-</polymer-element>
