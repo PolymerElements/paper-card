@@ -1,6 +1,6 @@
 # paper-card
 
-Material Design: <a href="http://www.google.com/design/spec/components/card.html">Cards</a>
+Material Design: <a href="http://www.google.com/design/spec/components/cards.html">Cards</a>
 
 `paper-card` is a container with a drop shadow.
 
