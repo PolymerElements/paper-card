@@ -5,14 +5,14 @@ Material Design: <a href="http://www.google.com/design/spec/components/card.html
 `paper-card` is a container with a drop shadow.
 
 Example:
-
-    <paper-card heading="Card Title">
-      <div class="card-content">Some content</div>
-      <div class="card-actions">
-        <paper-button>Some action</paper-button>
-      </div>
-    </paper-card>
-    
+```html
+<paper-card heading="Card Title">
+  <div class="card-content">Some content</div>
+  <div class="card-actions">
+    <paper-button>Some action</paper-button>
+  </div>
+</paper-card>
+```
 
 ### Accessibility
 By default, the `aria-label` will be set to the value of the `heading` attribute.
