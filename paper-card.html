@@ -50,63 +50,61 @@ Custom property | Description | Default
 -->
 
 <dom-module id="paper-card">
-  <style>
-  :host {
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-
-    background: #fff;
-    border-radius: 2px;
-    @apply(--paper-card);
-  }
-
-  /* IE 10 support for HTML5 hidden attr */
-  [hidden] {
-    display: none !important;
-  }
-
-  .header {
-    position: relative;
-    @apply(--paper-card-header);
-  }
-
-  .header img {
-    width: 100%;
-    pointer-events: none;
-    @apply(--paper-card-header-image);
-  }
-
-  .header .title-text {
-    padding: 16px;
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--paper-card-header-color, #000);
-    @apply(--paper-card-header-text);
-  }
-
-  .header .title-text.over-image {
-    position: absolute;
-    bottom: 0px;
-    @apply(--paper-card-header-image-text);
-  }
-
-  :host ::content .card-content {
-    padding: 16px;
-    position:relative;
-    @apply(--paper-card-content);
-  }
-
-  :host ::content .card-actions {
-    border-top: 1px solid #e8e8e8;
-    padding: 5px 16px;
-    position:relative;
-    @apply(--paper-card-actions);
-  }
-
-  </style>
-
   <template>
+    <style>
+      :host {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+
+        background: #fff;
+        border-radius: 2px;
+        @apply(--paper-card);
+      }
+
+      /* IE 10 support for HTML5 hidden attr */
+      [hidden] {
+        display: none !important;
+      }
+
+      .header {
+        position: relative;
+        @apply(--paper-card-header);
+      }
+
+      .header img {
+        width: 100%;
+        pointer-events: none;
+        @apply(--paper-card-header-image);
+      }
+
+      .header .title-text {
+        padding: 16px;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--paper-card-header-color, #000);
+        @apply(--paper-card-header-text);
+      }
+
+      .header .title-text.over-image {
+        position: absolute;
+        bottom: 0px;
+        @apply(--paper-card-header-image-text);
+      }
+
+      :host ::content .card-content {
+        padding: 16px;
+        position:relative;
+        @apply(--paper-card-content);
+      }
+
+      :host ::content .card-actions {
+        border-top: 1px solid #e8e8e8;
+        padding: 5px 16px;
+        position:relative;
+        @apply(--paper-card-actions);
+      }
+    </style>
 
     <paper-material id="shadow" animated$="[[animatedShadow]]" elevation=[[elevation]]>
       <div class="header">
