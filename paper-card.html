@@ -58,11 +58,14 @@ Custom property | Description | Default
         box-sizing: border-box;
 
         background: #fff;
+        border-radius: 2px;
         @apply(--paper-card);
       }
 
-      #shadow {
-        border-radius: 2px;
+      paper-material {
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
       }
 
       /* IE 10 support for HTML5 hidden attr */
@@ -109,7 +112,7 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-material id="shadow" animated$="[[animatedShadow]]" elevation=[[elevation]]>
+    <paper-material animated$="[[animatedShadow]]" elevation="[[elevation]]">
       <div class="header">
         <img hidden$="[[!image]]" src="[[image]]">
         <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
