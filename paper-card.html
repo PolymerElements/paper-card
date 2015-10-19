@@ -31,7 +31,7 @@ Example - top card image:
     <paper-card heading="Card Title" image="/path/to/image.png">
       ...
     </paper-card>
-    
+
 ### Accessibility
 
 By default, the `aria-label` will be set to the value of the `heading` attribute.
@@ -81,6 +81,9 @@ Custom property | Description | Default
 
       .header {
         position: relative;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        overflow: hidden;
         @apply(--paper-card-header);
       }
 
