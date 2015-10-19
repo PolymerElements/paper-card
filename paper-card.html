@@ -31,7 +31,7 @@ Example - top card image:
     <paper-card heading="Card Title" image="/path/to/image.png">
       ...
     </paper-card>
-    
+
 ### Accessibility
 
 By default, the `aria-label` will be set to the value of the `heading` attribute.
@@ -58,7 +58,7 @@ Custom property | Description | Default
 
 <dom-module id="paper-card">
   <template>
-    <style>
+    <style include="paper-material">
       :host {
         display: inline-block;
         position: relative;
@@ -67,11 +67,6 @@ Custom property | Description | Default
         background: #fff;
         border-radius: 2px;
         @apply(--paper-card);
-      }
-
-      paper-material {
-        border-radius: inherit;
-        @apply(--layout-fit);
       }
 
       /* IE 10 support for HTML5 hidden attr */
@@ -118,8 +113,6 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-material animated$="[[animatedShadow]]" elevation="[[elevation]]"></paper-material>
-
     <div class="header">
       <img hidden$="[[!image]]" src="[[image]]">
       <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
@@ -160,7 +153,8 @@ Custom property | Description | Default
        */
       elevation: {
         type: Number,
-        value: 1
+        value: 1,
+        reflectToAttribute: true
       },
 
       /**
@@ -170,6 +164,17 @@ Custom property | Description | Default
       animatedShadow: {
         type: Boolean,
         value: false
+      },
+
+      /**
+       * Read-only property used to pass down the `animatedShadow` value to
+       * the underlying paper-material style (since they have different names).
+       */
+      animated: {
+        type: Boolean,
+        reflectToAttribute: true,
+        readOnly: true,
+        computed: '_computeAnimated(animatedShadow)'
       }
     },
 
@@ -183,6 +188,10 @@ Custom property | Description | Default
       if (image)
         cls += ' over-image';
       return cls;
+    },
+
+    _computeAnimated: function(animatedShadow) {
+      return animatedShadow;
     }
   });
 </script>
