@@ -10,9 +10,7 @@
     "polymer",
     "card"
   ],
-  "main": [
-    "paper-card.html"
-  ],
+  "main": "paper-card.html",
   "private": true,
   "repository": {
     "type": "git",
