@@ -119,7 +119,7 @@ Custom property | Description | Default
     </style>
 
     <div class="header">
-      <iron-image hidden$="[[!image]]" src="[[image]]" preload$="[[preloadImage]]" fade$="[[fadeImage]]"></iron-image>
+      <iron-image hidden$="[[!image]]" src="[[image]]" preload$="[[preloadImage]]" fade$="[[fadeImage]]" width="[[imageWidth]]" height="[[imageHeight]]"></iron-image>
       <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
     </div>
 
@@ -164,6 +164,22 @@ Custom property | Description | Default
         fadeImage: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * Can be used to set the width of the title image.
+         */
+        imageWidth: {
+          type: Number,
+          value: null
+        },
+
+        /**
+         * Can be used to set the height of the title image.
+         */
+        imageHeight: {
+          type: Number,
+          value: null
         },
 
         /**
