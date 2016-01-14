@@ -21,7 +21,7 @@
   "ignore": [],
   "dependencies": {
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
-    "iron-image": "PolymerElements/iron-image#~1.2.0",
+    "iron-image": "PolymerElements/iron-image#^1.2.0",
     "paper-material": "PolymerElements/paper-material#^1.0.0",
     "polymer": "Polymer/polymer#^1.1.0"
   },
