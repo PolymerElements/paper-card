@@ -136,7 +136,7 @@ Custom property | Description | Default
           placeholder="[[placeholderImage]]"
           preload="[[preloadImage]]"
           fade="[[fadeImage]]"></iron-image>
-      <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
+      <div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div>
     </div>
 
     <content></content>
@@ -234,10 +234,7 @@ Custom property | Description | Default
       },
 
       _computeHeadingClass: function(image) {
-        var cls = 'title-text';
-        if (image)
-          cls += ' over-image';
-        return cls;
+        return image ? ' over-image' : '';
       },
 
       _computeAnimated: function(animatedShadow) {
