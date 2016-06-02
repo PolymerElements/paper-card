@@ -129,7 +129,12 @@ Custom property | Description | Default
     </style>
 
     <div class="header">
-      <iron-image hidden$="[[!image]]" src="[[image]]" preload$="[[preloadImage]]" fade$="[[fadeImage]]"></iron-image>
+      <iron-image
+          hidden$="[[!image]]"
+          src="[[image]]"
+          placeholder="[[placeholderImage]]"
+          preload="[[preloadImage]]"
+          fade="[[fadeImage]]"></iron-image>
       <div hidden$="[[!heading]]" class$="[[_computeHeadingClass(image)]]">[[heading]]</div>
     </div>
 
@@ -174,6 +179,15 @@ Custom property | Description | Default
         fadeImage: {
           type: Boolean,
           value: false
+        },
+
+        /**
+         * This image will be used as a background/placeholder until the src image has
+         * loaded. Use of a data-URI for placeholder is encouraged for instant rendering.
+         */
+        placeholderImage: {
+          type: String,
+          value: null
         },
 
         /**
