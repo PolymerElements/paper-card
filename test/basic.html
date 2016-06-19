@@ -70,9 +70,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
       test('placeholder properly setup', function() {
+        assert.strictEqual(img.placeholder, null);
         f.placeholder = 'some-place-holder';
-        assert.strictEqual(img.placeholder, f.placeholder);
-        f.placeholder = !f.placeholder;
         assert.strictEqual(img.placeholder, f.placeholder);
       });
 
