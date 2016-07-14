@@ -44,27 +44,27 @@ Amazing inline demo:
     <link rel="import" href="../paper-styles/color.html">
     <link rel="import" href="../paper-styles/typography.html">
     <link rel="import" href="paper-card.html">
+    <style is="custom-style">
+      .cafe-header { @apply(--paper-font-headline); }
+      .cafe-light { color: var(--paper-grey-600); }
+      .cafe-location {
+        float: right;
+        font-size: 15px;
+        vertical-align: middle;
+      }
+      .cafe-reserve { color: var(--google-blue-500); }
+      iron-icon.star {
+        --iron-icon-width: 16px;
+        --iron-icon-height: 16px;
+        color: var(--paper-amber-500);
+      }
+      iron-icon.star:last-of-type { color: var(--paper-grey-500); }
+    </style>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
 ```
 ```html
-<style is="custom-style">
-  .cafe-header { @apply(--paper-font-headline); }
-  .cafe-light { color: var(--paper-grey-600); }
-  .cafe-location {
-    float: right;
-    font-size: 15px;
-    vertical-align: middle;
-  }
-  .cafe-reserve { color: var(--google-blue-500); }
-  iron-icon.star {
-    --iron-icon-width: 16px;
-    --iron-icon-height: 16px;
-    color: var(--paper-amber-500);
-  }
-  iron-icon.star:last-of-type { color: var(--paper-grey-500); }
-</style>
 <paper-card image="demo/donuts.png">
   <div class="card-content">
     <div class="cafe-header">Cafe Basilico
