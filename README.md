@@ -24,6 +24,7 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
 `paper-card` is a container with a drop shadow.
 
 Amazing inline demo:
+<!---
 ```html
 <custom-element-demo>
   <template>
@@ -64,6 +65,7 @@ Amazing inline demo:
   </template>
 </custom-element-demo>
 ```
+-->
 ```html
 <paper-card image="demo/donuts.png">
   <div class="card-content">
