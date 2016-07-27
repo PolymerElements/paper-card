@@ -30,7 +30,7 @@ Example:
 
 Example - top card image:
 
-    <paper-card heading="Card Title" image="/path/to/image.png">
+    <paper-card heading="Card Title" image="/path/to/image.png" alt="image">
       ...
     </paper-card>
 
@@ -132,6 +132,7 @@ Custom property | Description | Default
       <iron-image
           hidden$="[[!image]]"
           src="[[image]]"
+          alt="[[alt]]"
           placeholder="[[placeholderImage]]"
           preload="[[preloadImage]]"
           fade="[[fadeImage]]"></iron-image>
@@ -161,6 +162,14 @@ Custom property | Description | Default
         image: {
           type: String,
           value: ''
+        },
+
+        /**
+         * The text alternative of the card's title image.
+         */
+        alt: {
+          type: String,
+          value: null
         },
 
         /**
