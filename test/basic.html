@@ -86,6 +86,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         f.placeholderImage = 'some-place-holder';
         assert.strictEqual(img.placeholder, f.placeholderImage);
       });
+
+      test('alt properly setup', function() {
+        assert.strictEqual(img.alt, null);
+        f.alt = 'some-text';
+        assert.strictEqual(img.alt, f.alt);
+      });
     });
   </script>
 

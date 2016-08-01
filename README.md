@@ -37,7 +37,7 @@ Example:
 Example - top card image:
 
 ```html
-<paper-card heading="Card Title" image="/path/to/image.png">
+<paper-card heading="Card Title" image="/path/to/image.png" alt="image">
   ...
 </paper-card>
 ```
