@@ -34,21 +34,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
   </test-fixture>
 
+  <test-fixture id="with-aria-label">
+    <template>
+      <paper-card heading="header" aria-label="the-aria-label">
+        <div class="card-content"><p>Sample content</p></div>
+      </paper-card>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="with-empty-aria-label">
+    <template>
+      <paper-card heading="header" aria-label="">
+        <div class="card-content"><p>Sample content</p></div>
+      </paper-card>
+    </template>
+  </test-fixture>
+
   <script>
     suite('a11y', function() {
       var f;
-      setup(function () {
-        f = fixture('basic');
+      suite('without aria-label', function() {
+        setup(function () {
+          f = fixture('basic');
+        });
+
+        test('aria-label set on card', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), f.heading);
+        });
+
+        test('aria-label can be updated by heading', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), f.heading);
+          f.heading = 'batman';
+          assert.strictEqual(f.getAttribute('aria-label'), 'batman');
+        });
       });
 
-      test('aria-label set on card', function() {
-        assert.strictEqual(f.getAttribute('aria-label'), f.heading);
+      suite('with aria-label', function() {
+        setup(function () {
+          f = fixture('with-aria-label');
+        });
+
+        test('defined aria-label is not overwritten by initial heading', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
+        });
+
+        test('defined aria-label is not overwritten by heading update', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
+          f.heading = 'batman';
+          assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
+        });
       });
 
-      test('aria-label can be updated', function() {
-        assert.strictEqual(f.getAttribute('aria-label'), f.heading);
-        f.heading = 'batman';
-        assert.strictEqual(f.getAttribute('aria-label'), 'batman');
+      suite('with empty aria-label', function() {
+        setup(function () {
+          f = fixture('with-empty-aria-label');
+        });
+
+        test('empty aria-label is not overwritten by initial heading', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), '');
+        });
+
+        test('empty aria-label is not overwritten by heading update', function() {
+          assert.strictEqual(f.getAttribute('aria-label'), '');
+          f.heading = 'batman';
+          assert.strictEqual(f.getAttribute('aria-label'), '');
+        });
       });
     });
     suite('header image', function() {
