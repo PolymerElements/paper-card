@@ -37,8 +37,13 @@ Example:
 <link rel="import" href="../paper-styles/typography.html">
 <link rel="import" href="paper-card.html">
 <style is="custom-style">
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   paper-card {
-    max-width: 500px;
+	max-width: 500px;
   }
   .cafe-header { @apply(--paper-font-headline); }
   .cafe-light { color: var(--paper-grey-600); }
