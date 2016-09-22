@@ -23,47 +23,36 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
 
 `paper-card` is a container with a drop shadow.
 
-Amazing inline demo:
+Example:
 <!---
 ```html
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-  
-    <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
-  
-    <link rel="import" href="../iron-collapse/iron-collapse.html">
-    <link rel="import" href="../iron-icons/iron-icons.html">
-    <link rel="import" href="../iron-icons/communication-icons.html">
-    <link rel="import" href="../iron-icons/hardware-icons.html">
-    <link rel="import" href="../iron-icons/social-icons.html">
-    <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-    <link rel="import" href="../paper-button/paper-button.html">
-    <link rel="import" href="../paper-checkbox/paper-checkbox.html">
-    <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-    <link rel="import" href="../paper-styles/color.html">
-    <link rel="import" href="../paper-styles/typography.html">
-    <link rel="import" href="paper-card.html">
-    <style is="custom-style">
-      .cafe-header { @apply(--paper-font-headline); }
-      .cafe-light { color: var(--paper-grey-600); }
-      .cafe-location {
-        float: right;
-        font-size: 15px;
-        vertical-align: middle;
-      }
-      .cafe-reserve { color: var(--google-blue-500); }
-      iron-icon.star {
-        --iron-icon-width: 16px;
-        --iron-icon-height: 16px;
-        color: var(--paper-amber-500);
-      }
-      iron-icon.star:last-of-type { color: var(--paper-grey-500); }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
+<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-styles/color.html">
+<link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="paper-card.html">
+<style is="custom-style">
+  paper-card {
+    max-width: 500px;
+  }
+  .cafe-header { @apply(--paper-font-headline); }
+  .cafe-light { color: var(--paper-grey-600); }
+  .cafe-location {
+    float: right;
+    font-size: 15px;
+    vertical-align: middle;
+  }
+  .cafe-reserve { color: var(--google-blue-500); }
+  iron-icon.star {
+    --iron-icon-width: 16px;
+    --iron-icon-height: 16px;
+    color: var(--paper-amber-500);
+  }
+  iron-icon.star:last-of-type { color: var(--paper-grey-500); }
+</style>
 ```
 -->
 ```html
@@ -83,57 +72,16 @@ Amazing inline demo:
       <iron-icon class="star" icon="star"></iron-icon>
     </div>
     <p>$・Italian, Cafe</p>
-    <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting with 12 indoor seats plus patio seating.</p>
+    <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting.</p>
   </div>
   <div class="card-actions">
-    <p>Tonight's availability</p>
     <div class="horizontal justified">
       <paper-icon-button icon="icons:event"></paper-icon-button>
       <paper-button>5:30PM</paper-button>
       <paper-button>7:30PM</paper-button>
       <paper-button>9:00PM</paper-button>
+      <paper-button class="cafe-reserve">Reserve</paper-button>
     </div>
-    <paper-button class="cafe-reserve">Reserve</paper-button>
   </div>
 </paper-card>
 ```
-Example:
-
-```html
-<paper-card heading="Card Title">
-  <div class="card-content">Some content</div>
-  <div class="card-actions">
-    <paper-button>Some action</paper-button>
-  </div>
-</paper-card>
-```
-
-Example - top card image:
-
-```html
-<paper-card heading="Card Title" image="/path/to/image.png" alt="image">
-  ...
-</paper-card>
-```
-
-### Accessibility
-
-By default, the `aria-label` will be set to the value of the `heading` attribute.
-
-### Styling
-
-The following custom properties and mixins are available for styling:
-
-| Custom property | Description | Default |
-| --- | --- | --- |
-| `--paper-card-background-color` | The background color of the card | `--primary-background-color` |
-| `--paper-card-header-color` | The color of the header text | `#000` |
-| `--paper-card-header` | Mixin applied to the card header section | `{}` |
-| `--paper-card-header-text` | Mixin applied to the title in the card header section | `{}` |
-| `--paper-card-header-image` | Mixin applied to the image in the card header section | `{}` |
-| `--paper-card-header-image-text` | Mixin applied to the text overlapping the image in the card header section | `{}` |
-| `--paper-card-content` | Mixin applied to the card content section | `{}` |
-| `--paper-card-actions` | Mixin applied to the card action section | `{}` |
-| `--paper-card` | Mixin applied to the card | `{}` |
-
-
