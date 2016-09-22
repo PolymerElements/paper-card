@@ -26,6 +26,8 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
 Example:
 <!---
 ```html
+<custom-element-demo>
+<template>
 <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-icons/communication-icons.html">
@@ -53,6 +55,9 @@ Example:
   }
   iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 </style>
+<next-code-block></next-code-block>
+</template>
+</custom-element-demo>
 ```
 -->
 ```html
