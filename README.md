@@ -6,7 +6,6 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
 
 `paper-card` is a container with a drop shadow.
 
-Example:
 <!---
 ```html
 <custom-element-demo>
