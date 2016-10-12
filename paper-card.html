@@ -131,6 +131,7 @@ Custom property | Description | Default
     <div class="header">
       <iron-image
           hidden$="[[!image]]"
+          aria-hidden$="[[_isHidden(image)]]"
           src="[[image]]"
           alt="[[alt]]"
           placeholder="[[placeholderImage]]"
@@ -226,6 +227,14 @@ Custom property | Description | Default
           readOnly: true,
           computed: '_computeAnimated(animatedShadow)'
         }
+      },
+      
+      /**
+       * Format function for aria-hidden. Use the ! operator results in the
+       * empty string when given a falsy value.
+       */
+      _isHidden: function(image) {
+        return image ? 'false' : 'true';
       },
 
       _headingChanged: function(heading) {
