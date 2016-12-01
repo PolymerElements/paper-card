@@ -112,14 +112,14 @@ Custom property | Description | Default
         @apply --paper-card-header-image-text;
       }
 
-      :host .card-content ::slotted(*) {
+      :host ::slotted(.card-content) {
         padding: 16px;
         position:relative;
 
         @apply --paper-card-content;
       }
 
-      :host .card-actions ::slotted(*) {
+      :host ::slotted(.card-actions) {
         border-top: 1px solid #e8e8e8;
         padding: 5px 16px;
         position:relative;
@@ -128,21 +128,18 @@ Custom property | Description | Default
       }
     </style>
 
-    <div class="paper-material" elevation="1">
-      <div class="header">
-        <iron-image
-            hidden$="[[!image]]"
-            src="[[image]]"
-            alt="[[alt]]"
-            placeholder="[[placeholderImage]]"
-            preload="[[preloadImage]]"
-            fade="[[fadeImage]]"></iron-image>
-        <div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div>
-      </div>
+    <div class="header">
+      <iron-image
+          hidden$="[[!image]]"
+          src="[[image]]"
+          alt="[[alt]]"
+          placeholder="[[placeholderImage]]"
+          preload="[[preloadImage]]"
+          fade="[[fadeImage]]"></iron-image>
+      <div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div>
+    </div>
 
-      <div class="card-content"><slot name="card-content"></slot></div>
-      <div class="card-actions"><slot name="card-actions"></slot></div>
-    </>
+    <slot></slot>
   </template>
 
   <script>
@@ -229,6 +226,10 @@ Custom property | Description | Default
           readOnly: true,
           computed: '_computeAnimated(animatedShadow)'
         }
+      },
+
+      created: function() {
+        this.classList.add('paper-material');
       },
 
       _headingChanged: function(heading) {
