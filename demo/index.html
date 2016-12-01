@@ -110,10 +110,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <demo-snippet>
         <template>
           <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
-            <div slot="card-content">
+            <div class="card-content">
               Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
             </div>
-            <div slot="card-actions">
+            <div class="card-actions">
               <paper-button>Share</paper-button>
               <paper-button>Explore!</paper-button>
             </div>
@@ -143,7 +143,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </style>
           </custom-style>
             <paper-card image="./donuts.png" alt="Donuts">
-              <div slot="card-content">
+              <div class="card-content">
                 <div class="cafe-header">Cafe Basilico
                   <div class="cafe-location cafe-light">
                     <iron-icon icon="communication:location-on"></iron-icon>
@@ -160,7 +160,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>$・Italian, Cafe</p>
                 <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting with 12 indoor seats plus patio seating.</p>
               </div>
-              <div slot="card-actions">
+              <div class="card-actions">
                 <p>Tonight's availability</p>
                 <div class="horizontal justified">
                   <paper-icon-button icon="icons:event"></paper-icon-button>
@@ -179,22 +179,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <template>
           <custom-style>
             <style is="custom-style">
-              paper-card.rate {
-                --paper-card-content: {
-                  padding: 0 !important;
-                };
-              }
-              .rate-content { padding: 16px; }
               .rate-image {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
                 width: 100px;
-                height: 170px;
                 background: url('./donuts.png');
                 background-size: cover;
-                float: right;
               }
               .rate-header { @apply(--paper-font-headline); }
               .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
-              .rate-actions { border-top: 1px solid #e8e8e8; padding: 4px 16px;}
               paper-icon-button.rate-icon {
                 --iron-icon-fill-color: white;
                 --iron-icon-stroke-color: var(--paper-grey-600);
@@ -202,23 +197,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </style>
           </custom-style>
           <paper-card class="rate">
-            <div slot="card-content" class="horizontal">
-              <div class="flex">
-                <div class="rate-content">
-                  <div class="rate-header">Rate this album</div>
-                  <div class="rate-name">Mac Miller</div>
-                  <div>Live from space</div>
-                </div>
-                <div class="rate-actions">
-                  <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
-                  <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
-                </div>
-              </div>
-              <div class="rate-image"></div>
+            <div class="card-content">
+              <div class="rate-header">Rate this album</div>
+              <div class="rate-name">Mac Miller</div>
+              <div>Live from space</div>
             </div>
+            <div class="card-actions">
+              <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+              <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+              <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+              <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+              <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+            </div>
+            <div class="rate-image"></div>
           </paper-card>
         </template>
       </demo-snippet>
@@ -227,8 +218,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <demo-snippet>
         <template>
           <paper-card heading="Top western road trips" image="./trip.png" alt="Sailboat Harbor" class="white">
-            <div slot="card-content">1,000 miles of wonder</div>
-            <div slot="card-actions">
+            <div class="card-content">1,000 miles of wonder</div>
+            <div class="card-actions">
               <paper-button>Share</paper-button>
               <paper-button>Explore</paper-button>
               <paper-icon-button
@@ -267,7 +258,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </style>
           </custom-style>
           <paper-card heading="Pre-fab homes" image="./house.png" alt="House" class="white" style="margin-bottom:8px;">
-            <div slot="card-actions">
+            <div class="card-actions">
               <paper-icon-button icon="favorite"></paper-icon-button>
               <paper-icon-button icon="bookmark"></paper-icon-button>
               <paper-icon-button icon="social:share"></paper-icon-button>
@@ -275,14 +266,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </paper-card>
           <div class="horizontal">
             <paper-card heading="Favorite trips" image="./trip.png" alt="Trip" class="white" style="margin-right:4px;">
-              <div slot="card-actions" class="horizontal justified">
+              <div class="card-actions horizontal justified">
                 <paper-icon-button icon="favorite"></paper-icon-button>
                 <paper-icon-button icon="bookmark"></paper-icon-button>
                 <paper-icon-button icon="social:share"></paper-icon-button>
               </div>
             </paper-card>
             <paper-card heading="Best airlines" image="./travel.png" alt="Travel" class="white" style="margin-left:4px;">
-              <div slot="card-actions" class="horizontal justified">
+              <div class="card-actions horizontal justified">
                 <paper-icon-button icon="favorite"></paper-icon-button>
                 <paper-icon-button icon="bookmark"></paper-icon-button>
                 <paper-icon-button icon="social:share"></paper-icon-button>
@@ -314,27 +305,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </custom-style>
           <div id="notes">
             <paper-card heading="Call Jennifer" class="cyan">
-              <div slot="card-actions">
+              <div class="card-actions">
                 <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
                 <span>March 19, 2017</span>
               </div>
             </paper-card>
             <paper-card class="dark">
-              <div slot="card-content">
+              <div class="card-content">
                 <p>Groceries:</p>
                 <paper-checkbox>almond milk</paper-checkbox>
                 <paper-checkbox>coconut water</paper-checkbox>
                 <paper-checkbox>cheese</paper-checkbox>
                 <paper-checkbox>green apples</paper-checkbox>
               </div>
-              <div slot="card-actions">
+              <div class="card-actions">
                 <paper-icon-button icon="communication:location-on" style="color:white"></paper-icon-button>
                 <span>Campbell</span>
               </div>
             </paper-card>
             <paper-card heading="clean desk" class="lime"></paper-card>
             <paper-card image="./donuts.png" alt="Donuts" class="amber">
-              <div slot="card-content">New cafe opened on Valencia St.</div>
+              <div class="card-content">New cafe opened on Valencia St.</div>
             </paper-card>
             <paper-card heading="Yuna tickets on sale 6/24" class="cyan">
             </paper-card>
