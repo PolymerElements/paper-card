@@ -126,7 +126,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <template>
           <custom-style>
             <style is="custom-style">
-              .cafe-header { @apply(--paper-font-headline); }
+              .cafe-header { @apply --paper-font-headline; }
               .cafe-light { color: var(--paper-grey-600); }
               .cafe-location {
                 float: right;
@@ -188,7 +188,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background: url('./donuts.png');
                 background-size: cover;
               }
-              .rate-header { @apply(--paper-font-headline); }
+              .rate-header { @apply --paper-font-headline; }
               .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
               paper-icon-button.rate-icon {
                 --iron-icon-fill-color: white;
@@ -289,8 +289,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <custom-style>
             <style is="custom-style">
               #notes {
-                @apply(--layout-vertical);
-                @apply(--layout-wrap);
+                @apply --layout-vertical;
+                @apply --layout-wrap;
                 height: 344px;
                 width: 384px;
               }

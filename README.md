@@ -28,7 +28,7 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
   paper-card {
 	max-width: 500px;
   }
-  .cafe-header { @apply(--paper-font-headline); }
+  .cafe-header { @apply --paper-font-headline; }
   .cafe-light { color: var(--paper-grey-600); }
   .cafe-location {
     float: right;
