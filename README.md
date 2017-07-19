@@ -6,6 +6,11 @@ Material design: [Cards](https://www.google.com/design/spec/components/cards.htm
 
 `paper-card` is a container with a drop shadow.
 
+## Install using Bower
+```
+bower install PolymerElements/paper-card
+```
+
 <!---
 ```html
 <custom-element-demo>
