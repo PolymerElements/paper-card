@@ -17,22 +17,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
 
-  <link rel="import" href="../../iron-collapse/iron-collapse.html">
-  <link rel="import" href="../../iron-icons/iron-icons.html">
-  <link rel="import" href="../../iron-icons/communication-icons.html">
-  <link rel="import" href="../../iron-icons/social-icons.html">
-  <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
-  <link rel="import" href="../../paper-button/paper-button.html">
-  <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
-  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="../../paper-styles/color.html">
-  <link rel="import" href="../../paper-styles/typography.html">
-  <link rel="import" href="../paper-card.html">
+  <script type="module" src="../../iron-collapse/iron-collapse.js"></script>
+  <script type="module" src="../../iron-icons/iron-icons.js"></script>
+  <script type="module" src="../../iron-icons/communication-icons.js"></script>
+  <script type="module" src="../../iron-icons/social-icons.js"></script>
+  <script type="module" src="../../iron-flex-layout/iron-flex-layout.js"></script>
+  <script type="module" src="../../paper-button/paper-button.js"></script>
+  <script type="module" src="../../paper-checkbox/paper-checkbox.js"></script>
+  <script type="module" src="../../paper-icon-button/paper-icon-button.js"></script>
+  <script type="module" src="../../paper-styles/color.js"></script>
+  <script type="module" src="../../paper-styles/typography.js"></script>
+  <script type="module" src="../paper-card.js"></script>
 
-  <custom-style>
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
       demo-snippet {
         --demo-snippet-demo: {
@@ -99,12 +110,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: white !important;
       }
     </style>
-  </custom-style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer);
+</script>
 
 </head>
 <body unresolved>
   <body unresolved>
-    <div class="vertical-section-container centered">
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>A paper-card with a simple heading, header image, body content, and actions</h3>
       <demo-snippet>
         <template>
@@ -156,7 +173,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <iron-icon class="star" icon="star"></iron-icon>
                   <iron-icon class="star" icon="star"></iron-icon>
                 </div>
-                <p>$・Italian, Cafe</p>
+                <p>\$・Italian, Cafe</p>
                 <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting with 12 indoor seats plus patio seating.</p>
               </div>
               <div class="card-actions">
@@ -221,11 +238,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div class="card-actions">
               <paper-button>Share</paper-button>
               <paper-button>Explore</paper-button>
-              <paper-icon-button
-                icon="expand-more"
-                title="more info"
-                onclick="_toggle()"
-                style="float:right;">
+              <paper-icon-button icon="expand-more" title="more info" onclick="_toggle()" style="float:right;">
               </paper-icon-button>
               <iron-collapse id="more-info" style="width:100%;">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent enim ante, tempus eget volutpat ac, cursus ac ante. Nulla facilisi. Praesent sed lacinia ligula. Donec malesuada nisl eget quam iaculis, vel placerat justo cursus.
@@ -237,7 +250,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   iconButton.icon = moreInfo.opened ? 'expand-more': 'expand-less';
                   moreInfo.toggle();
                 }
-              </script>
+              &lt;/script>
             </div>
           </paper-card>
         </template>
@@ -318,6 +331,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
               <div class="card-actions">
                 <paper-icon-button icon="communication:location-on" style="color:white"></paper-icon-button>
+                <span>Campbell</span>
+              </div>
+            </paper-card>
+            <paper-card heading="clean desk" class="lime"></paper-card>
+            <paper-card image="./donuts.png" alt="Donuts" class="amber">
+              <div class="card-content">New cafe opened on Valencia St.</div>
+            </paper-card>
+            <paper-card heading="Yuna tickets on sale 6/24" class="cyan">
+            </paper-card>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>tion:location-on" style="color:white"></paper-icon-button>
                 <span>Campbell</span>
               </div>
             </paper-card>
