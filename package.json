@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-card",
+  "private": true,
+  "description": "Material design piece of paper with unique related data",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-card.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
