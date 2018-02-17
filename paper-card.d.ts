@@ -111,7 +111,7 @@ interface PaperCardElement extends Polymer.Element {
    * empty string when given a falsy value.
    */
   _isHidden(image: any): any;
-  _headingChanged(heading: any): any;
+  _headingChanged(heading: any): void;
   _computeHeadingClass(image: any): any;
   _computeAnimated(animatedShadow: any): any;
 }
