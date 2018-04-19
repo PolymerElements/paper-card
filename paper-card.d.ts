@@ -84,8 +84,9 @@ interface PaperCardElement extends Polymer.Element {
   fadeImage: boolean|null|undefined;
 
   /**
-   * This image will be used as a background/placeholder until the src image has
-   * loaded. Use of a data-URI for placeholder is encouraged for instant rendering.
+   * This image will be used as a background/placeholder until the src image
+   * has loaded. Use of a data-URI for placeholder is encouraged for instant
+   * rendering.
    */
   placeholderImage: string|null|undefined;
 

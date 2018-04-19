@@ -54,7 +54,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     suite('a11y', function() {
       var f;
       suite('without aria-label attribute set', function() {
-        setup(function () {
+        setup(function() {
           f = fixture('basic');
         });
 
@@ -70,13 +70,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
       suite('with aria-label attribute set', function() {
-        setup(function () {
+        setup(function() {
           f = fixture('with-aria-label');
         });
 
-        test('defined aria-label is not overwritten by initial heading', function() {
-          assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
-        });
+        test(
+            'defined aria-label is not overwritten by initial heading', function() {
+              assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
+            });
 
         test('defined aria-label is not overwritten by heading update', function() {
           assert.strictEqual(f.getAttribute('aria-label'), 'the-aria-label');
@@ -86,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
       suite('with aria-label attribute set to ""', function() {
-        setup(function () {
+        setup(function() {
           f = fixture('with-empty-aria-label');
         });
 
@@ -103,7 +104,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       suite('header image', function() {
         var img;
-        setup(function () {
+        setup(function() {
           f = fixture('basic');
           img = f.$$('iron-image');
         });
@@ -120,12 +121,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     suite('header image', function() {
       var f, img;
-      setup(function () {
+      setup(function() {
         f = fixture('basic');
         img = f.$$('iron-image');
       });
 
-      test('is iron-image', function(){
+      test('is iron-image', function() {
         expect(img).to.be.ok;
       });
 
@@ -135,7 +136,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.strictEqual(img.src, f.image);
         assert.strictEqual(img.offsetWidth, f.offsetWidth);
       });
-      
+
       test('preload properly setup', function() {
         assert.strictEqual(img.preload, f.preloadImage);
         f.preloadImage = !f.preloadImage;
