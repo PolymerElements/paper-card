@@ -1,4 +1,4 @@
-<!--
+/**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -6,15 +6,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../iron-image/iron-image.html">
-<link rel="import" href="../paper-styles/element-styles/paper-material-styles.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-
-<!--
+*/
+/**
 Material design: [Cards](https://www.google.com/design/spec/components/cards.html)
 
 `paper-card` is a container with a drop shadow.
@@ -57,10 +50,22 @@ Custom property | Description | Default
 @group Paper Elements
 @element paper-card
 @demo demo/index.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="paper-card">
-  <template>
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/paper-styles/element-styles/paper-material-styles.js';
+import '@polymer/paper-styles/default-theme.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
     <style include="paper-material-styles">
       :host {
         display: inline-block;
@@ -149,106 +154,95 @@ Custom property | Description | Default
     </style>
 
     <div class="header">
-      <iron-image
-          hidden$="[[!image]]"
-          aria-hidden$="[[_isHidden(image)]]"
-          src="[[image]]"
-          alt="[[alt]]"
-          placeholder="[[placeholderImage]]"
-          preload="[[preloadImage]]"
-          fade="[[fadeImage]]"></iron-image>
-      <div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div>
+      <iron-image hidden\$="[[!image]]" aria-hidden\$="[[_isHidden(image)]]" src="[[image]]" alt="[[alt]]" placeholder="[[placeholderImage]]" preload="[[preloadImage]]" fade="[[fadeImage]]"></iron-image>
+      <div hidden\$="[[!heading]]" class\$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div>
     </div>
 
     <slot></slot>
-  </template>
+`,
 
-  <script>
-    Polymer({
-      is: 'paper-card',
+  is: 'paper-card',
 
-      properties: {
-        /**
-         * The title of the card.
-         */
-        heading: {type: String, value: '', observer: '_headingChanged'},
+  properties: {
+    /**
+     * The title of the card.
+     */
+    heading: {type: String, value: '', observer: '_headingChanged'},
 
-        /**
-         * The url of the title image of the card.
-         */
-        image: {type: String, value: ''},
+    /**
+     * The url of the title image of the card.
+     */
+    image: {type: String, value: ''},
 
-        /**
-         * The text alternative of the card's title image.
-         */
-        alt: {type: String},
+    /**
+     * The text alternative of the card's title image.
+     */
+    alt: {type: String},
 
-        /**
-         * When `true`, any change to the image url property will cause the
-         * `placeholder` image to be shown until the image is fully rendered.
-         */
-        preloadImage: {type: Boolean, value: false},
+    /**
+     * When `true`, any change to the image url property will cause the
+     * `placeholder` image to be shown until the image is fully rendered.
+     */
+    preloadImage: {type: Boolean, value: false},
 
-        /**
-         * When `preloadImage` is true, setting `fadeImage` to true will cause the
-         * image to fade into place.
-         */
-        fadeImage: {type: Boolean, value: false},
+    /**
+     * When `preloadImage` is true, setting `fadeImage` to true will cause the
+     * image to fade into place.
+     */
+    fadeImage: {type: Boolean, value: false},
 
-        /**
-         * This image will be used as a background/placeholder until the src image
-         * has loaded. Use of a data-URI for placeholder is encouraged for instant
-         * rendering.
-         */
-        placeholderImage: {type: String, value: null},
+    /**
+     * This image will be used as a background/placeholder until the src image
+     * has loaded. Use of a data-URI for placeholder is encouraged for instant
+     * rendering.
+     */
+    placeholderImage: {type: String, value: null},
 
-        /**
-         * The z-depth of the card, from 0-5.
-         */
-        elevation: {type: Number, value: 1, reflectToAttribute: true},
+    /**
+     * The z-depth of the card, from 0-5.
+     */
+    elevation: {type: Number, value: 1, reflectToAttribute: true},
 
-        /**
-         * Set this to true to animate the card shadow when setting a new
-         * `z` value.
-         */
-        animatedShadow: {type: Boolean, value: false},
+    /**
+     * Set this to true to animate the card shadow when setting a new
+     * `z` value.
+     */
+    animatedShadow: {type: Boolean, value: false},
 
-        /**
-         * Read-only property used to pass down the `animatedShadow` value to
-         * the underlying paper-material style (since they have different names).
-         */
-        animated: {
-          type: Boolean,
-          reflectToAttribute: true,
-          readOnly: true,
-          computed: '_computeAnimated(animatedShadow)'
-        }
-      },
+    /**
+     * Read-only property used to pass down the `animatedShadow` value to
+     * the underlying paper-material style (since they have different names).
+     */
+    animated: {
+      type: Boolean,
+      reflectToAttribute: true,
+      readOnly: true,
+      computed: '_computeAnimated(animatedShadow)'
+    }
+  },
 
-      /**
-       * Format function for aria-hidden. Use the ! operator results in the
-       * empty string when given a falsy value.
-       */
-      _isHidden: function(image) {
-        return image ? 'false' : 'true';
-      },
+  /**
+   * Format function for aria-hidden. Use the ! operator results in the
+   * empty string when given a falsy value.
+   */
+  _isHidden: function(image) {
+    return image ? 'false' : 'true';
+  },
 
-      _headingChanged: function(heading) {
-        var currentHeading = this.getAttribute('heading'),
-            currentLabel = this.getAttribute('aria-label');
+  _headingChanged: function(heading) {
+    var currentHeading = this.getAttribute('heading'),
+        currentLabel = this.getAttribute('aria-label');
 
-        if (typeof currentLabel !== 'string' || currentLabel === currentHeading) {
-          this.setAttribute('aria-label', heading);
-        }
-      },
+    if (typeof currentLabel !== 'string' || currentLabel === currentHeading) {
+      this.setAttribute('aria-label', heading);
+    }
+  },
 
-      _computeHeadingClass: function(image) {
-        return image ? ' over-image' : '';
-      },
+  _computeHeadingClass: function(image) {
+    return image ? ' over-image' : '';
+  },
 
-      _computeAnimated: function(animatedShadow) {
-        return animatedShadow;
-      }
-    });
-  </script>
-</dom-module>
+  _computeAnimated: function(animatedShadow) {
+    return animatedShadow;
+  }
+});
