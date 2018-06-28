@@ -155,6 +155,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.strictEqual(img.placeholder, f.placeholderImage);
       });
 
+      test('sizing properly setup', function() {
+        assert.strictEqual(img.sizing, null);
+        f.sizingImage = 'some-sizing';
+        assert.strictEqual(img.sizing, f.sizingImage);
+      });
+
+      test('position properly setup', function() {
+        assert.strictEqual(img.position, null);
+        f.positionImage = 'some-position';
+        assert.strictEqual(img.position, f.positionImage);
+      });
+
       test('alt properly setup', function() {
         assert.strictEqual(img.alt, null);
         f.alt = 'some-text';
