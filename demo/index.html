@@ -32,96 +32,87 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="module" src="../../paper-styles/typography.js"></script>
   <script type="module" src="../paper-card.js"></script>
 
-  <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-const $_documentContainer = document.createElement('template');
+  <script type="module">
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+    const template = html`
+      <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+          demo-snippet {
+            --demo-snippet-demo: {
+              background: var(--paper-grey-200);
+              padding: 16px;
+            };
+            --demo-snippet-code: {
+              max-height: 300px;
+            }
+          }
 
-$_documentContainer.innerHTML = `<custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      demo-snippet {
-        --demo-snippet-demo: {
-          background: var(--paper-grey-200);
-          padding: 16px;
-        };
-        --demo-snippet-code: {
-          max-height: 300px;
-        }
-      }
+          .vertical-section-container {
+            max-width: 400px;
+          }
 
-      .vertical-section-container {
-        max-width: 400px;
-      }
+          paper-card {
+            width: 100%;
+          }
 
-      paper-card {
-        width: 100%;
-      }
+          .horizontal {
+            @apply --layout-horizontal;
+          }
 
-      .horizontal {
-        @apply --layout-horizontal;
-      }
+          .flex {
+            @apply --layout-flex;
+          }
 
-      .flex {
-        @apply --layout-flex;
-      }
+          .justified {
+            @apply --layout-justified;
+          }
 
-      .justified {
-        @apply --layout-justified;
-      }
+          .amber {
+            background: var(--paper-amber-900);
+          }
 
-      .amber {
-        background: var(--paper-amber-900);
-      }
+          .lime {
+            background: var(--paper-lime-500);
+          }
 
-      .lime {
-        background: var(--paper-lime-500);
-      }
+          .cyan {
+            background: var(--paper-cyan-500);
+          }
 
-      .cyan {
-        background: var(--paper-cyan-500);
-      }
+          .dark {
+            background: var(--paper-blue-grey-500);
+          }
+          paper-card.dark, paper-card.amber, paper-card.lime, paper-card.cyan {
+            color: white;
+            --paper-card-header-color: white;
+          }
 
-      .dark {
-        background: var(--paper-blue-grey-500);
-      }
-      paper-card.dark, paper-card.amber, paper-card.lime, paper-card.cyan {
-        color: white;
-        --paper-card-header-color: white;
-      }
+          paper-checkbox {
+            display: block;
+            margin-bottom: 4px;
+            --paper-checkbox-label-color: white;
+            --paper-checkbox-unchecked-color: white;
+          }
 
-      paper-checkbox {
-        display: block;
-        margin-bottom: 4px;
-        --paper-checkbox-label-color: white;
-        --paper-checkbox-unchecked-color: white;
-      }
+          paper-icon-button {
+            color: var(--paper-grey-600);
+          }
 
-      paper-icon-button {
-        color: var(--paper-grey-600);
-      }
-
-      paper-icon-button.white {
-        color: white !important;
-      }
-    </style>
-  </custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
-
+          paper-icon-button.white {
+            color: white !important;
+          }
+        </style>
+      </custom-style>`;
+    document.body.appendChild(template.content);
+  </script>
 </head>
 <body unresolved>
   <body unresolved>
     <script type="module">
-const $_documentContainer = document.createElement('template');
+      const $_documentContainer = document.createElement('template');
 
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      $_documentContainer.innerHTML =
+          `<div class="vertical-section-container centered">
       <h3>A paper-card with a simple heading, header image, body content, and actions</h3>
       <demo-snippet>
         <template>
@@ -345,8 +336,8 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
       </demo-snippet>
     </div>`;
 
-document.body.appendChild($_documentContainer.content);
-</script>     <paper-icon-button icon="communication:location-on" style="color:white"></paper-icon-button>
+      document.body.appendChild($_documentContainer.content);
+    </script>
                 <span>Campbell</span>
               </div>
             </paper-card>
