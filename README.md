@@ -1,83 +1,85 @@
+[![Published on NPM](https://img.shields.io/npm/v/@polymer/paper-card.svg)](https://www.npmjs.com/package/@polymer/paper-card)
 [![Build status](https://travis-ci.org/PolymerElements/paper-card.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-card)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-card)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/paper-card)
 
 ## &lt;paper-card&gt;
-
-Material design: [Cards](https://www.google.com/design/spec/components/cards.html)
-
 `paper-card` is a container with a drop shadow.
 
-<!---
-```html
-<custom-element-demo>
-<template>
-<script src="../webcomponentsjs/webcomponents-lite.js"></script>
-<link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../iron-icons/communication-icons.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-styles/color.html">
-<link rel="import" href="../paper-styles/typography.html">
-<link rel="import" href="paper-card.html">
-<custom-style>
-<style is="custom-style">
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  paper-card {
-	max-width: 500px;
-  }
-  .cafe-header { @apply --paper-font-headline; }
-  .cafe-light { color: var(--paper-grey-600); }
-  .cafe-location {
-    float: right;
-    font-size: 15px;
-    vertical-align: middle;
-  }
-  .cafe-reserve { color: var(--google-blue-500); }
-  iron-icon.star {
-    --iron-icon-width: 16px;
-    --iron-icon-height: 16px;
-    color: var(--paper-amber-500);
-  }
-  iron-icon.star:last-of-type { color: var(--paper-grey-500); }
-</style>
-<custom-style>
-<next-code-block></next-code-block>
-</template>
-</custom-element-demo>
-```
--->
+See: [Documentation](https://www.webcomponents.org/element/@polymer/paper-card),
+  [Demo](https://www.webcomponents.org/element/@polymer/paper-card/demo/demo/index.html).
 
+## Usage
+
+### Installation
+```
+npm install --save @polymer/paper-card
+```
+
+### In an html file
 ```html
-<paper-card image="demo/donuts.png">
-  <div class="card-content">
-    <div class="cafe-header">Cafe Basilico
-      <div class="cafe-location cafe-light">
-        <iron-icon icon="communication:location-on"></iron-icon>
-        <span>250ft</span>
+<html>
+  <head>
+    <script type="module">
+      import '@polymer/paper-card/paper-card.js';
+      import '@polymer/paper-button/paper-button.js';
+    </script>
+  </head>
+  <body>
+    <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
+      <div class="card-content">
+        Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
       </div>
-    </div>
-    <div class="cafe-rating">
-      <iron-icon class="star" icon="star"></iron-icon>
-      <iron-icon class="star" icon="star"></iron-icon>
-      <iron-icon class="star" icon="star"></iron-icon>
-      <iron-icon class="star" icon="star"></iron-icon>
-      <iron-icon class="star" icon="star"></iron-icon>
-    </div>
-    <p>$・Italian, Cafe</p>
-    <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting.</p>
-  </div>
-  <div class="card-actions">
-    <div class="horizontal justified">
-      <paper-icon-button icon="icons:event"></paper-icon-button>
-      <paper-button>5:30PM</paper-button>
-      <paper-button>7:30PM</paper-button>
-      <paper-button>9:00PM</paper-button>
-      <paper-button class="cafe-reserve">Reserve</paper-button>
-    </div>
-  </div>
-</paper-card>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
+  </body>
+</html>
+```
+### In a Polymer 3 element
+```js
+import {PolymerElement, html} from '@polymer/polymer';
+import '@polymer/paper-card/paper-card.js';
+import '@polymer/paper-button/paper-button.js';
+
+class SampleElement extends PolymerElement {
+  static get template() {
+    return html`
+    <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
+      <div class="card-content">
+        Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+      </div>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
+    `;
+  }
+}
+customElements.define('sample-element', SampleElement);
+```
+
+## Contributing
+If you want to send a PR to this element, here are
+the instructions for running the tests and demo locally:
+
+### Installation
+```sh
+git clone https://github.com/PolymerElements/paper-card
+cd paper-card
+npm install
+npm install -g polymer-cli
+```
+
+### Running the demo locally
+```sh
+polymer serve --npm
+open http://127.0.0.1:<port>/demo/
+```
+
+### Running the tests
+```sh
+polymer test --npm
 ```

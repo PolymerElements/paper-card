@@ -1,14 +1,25 @@
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+This code may only be used under the BSD style license found at
+http://polymer.github.io/LICENSE.txt The complete set of authors may be found at
+http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
+found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
+part of the polymer project is also subject to an additional IP rights grant
+found at http://polymer.github.io/PATENTS.txt
 */
+import '@polymer/polymer/polymer-legacy.js';
+
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/paper-styles/element-styles/paper-material-styles.js';
+import '@polymer/paper-styles/default-theme.js';
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+
 /**
-Material design: [Cards](https://www.google.com/design/spec/components/cards.html)
+Material design:
+[Cards](https://www.google.com/design/spec/components/cards.html)
 
 `paper-card` is a container with a drop shadow.
 
@@ -29,7 +40,8 @@ Example - top card image:
 
 ### Accessibility
 
-By default, the `aria-label` will be set to the value of the `heading` attribute.
+By default, the `aria-label` will be set to the value of the `heading`
+attribute.
 
 ### Styling
 
@@ -37,12 +49,16 @@ The following custom properties and mixins are available for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-card-background-color` | The background color of the card | `--primary-background-color`
+`--paper-card-background-color` | The background color of the card |
+`--primary-background-color`
 `--paper-card-header-color` | The color of the header text | `#000`
 `--paper-card-header` | Mixin applied to the card header section | `{}`
-`--paper-card-header-text` | Mixin applied to the title in the card header section | `{}`
-`--paper-card-header-image` | Mixin applied to the image in the card header section | `{}`
-`--paper-card-header-image-text` | Mixin applied to the text overlapping the image in the card header section | `{}`
+`--paper-card-header-text` | Mixin applied to the title in the card header
+section | `{}`
+`--paper-card-header-image` | Mixin applied to the image in the card header
+section | `{}`
+`--paper-card-header-image-text` | Mixin applied to the text overlapping the
+image in the card header section | `{}`
 `--paper-card-content` | Mixin applied to the card content section| `{}`
 `--paper-card-actions` | Mixin applied to the card action section | `{}`
 `--paper-card` | Mixin applied to the card | `{}`
@@ -51,19 +67,6 @@ Custom property | Description | Default
 @element paper-card
 @demo demo/index.html
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import '@polymer/iron-image/iron-image.js';
-import '@polymer/paper-styles/element-styles/paper-material-styles.js';
-import '@polymer/paper-styles/default-theme.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 Polymer({
   _template: html`
     <style include="paper-material-styles">
