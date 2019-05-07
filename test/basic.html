@@ -161,6 +161,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.strictEqual(img.alt, f.alt);
       });
     });
+
+    suite('animated shadow', function() {
+      var f;
+      setup(function() {
+        f = fixture('basic');
+        f.animatedShadow = true;
+      });
+
+      test('animation works', function(done) {
+        f.addEventListener('transitionend', function(e) {
+          assert.strictEqual(e.propertyName, 'box-shadow')
+          done();
+        })
+
+        window.setTimeout(function() {
+          f.elevation = 3;
+        }, 0);
+      })
+    });
   </script>
 
 </body>
