@@ -82,6 +82,10 @@ Polymer({
         display: none !important;
       }
 
+      :host([animated]) {
+        @apply --shadow-transition;
+      }
+
       .header {
         position: relative;
         border-top-left-radius: inherit;
