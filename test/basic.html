@@ -170,13 +170,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       });
 
       test('animation works', function(done) {
-        f.addEventListener("transitionend", function(e) {
+        f.addEventListener('transitionend', function(e) {
           assert.strictEqual(e.elapsedTime, 0.28);
           assert.strictEqual(e.propertyName, 'box-shadow')
           done();
         })
 
-        window.setTimeout(function(){
+        window.setTimeout(function() {
           f.elevation = 3;
         }, 0);
       })
