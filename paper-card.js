@@ -59,11 +59,11 @@ Custom property | Description | Default
 `--paper-card-actions` | Mixin applied to the card action section | `{}`
 `--paper-card` | Mixin applied to the card | `{}`
 
-@group Paper Elements
 @element paper-card
 @demo demo/index.html
 */
 Polymer({
+  /** @override */
   _template: html`
     <style include="paper-material-styles">
       :host {
